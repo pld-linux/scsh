@@ -1,7 +1,7 @@
 Summary:	Unix shell embedded within Scheme
 Name:		scsh
 Version:	0.6.6
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Applications/Shells
 URL:		http://www.scsh.net/
@@ -11,6 +11,7 @@ Patch0:		%{name}-build.patch
 BuildRequires:	automake
 Requires(post,preun):	grep
 Requires(preun):	fileutils
+ExcludeArch:	alpha amd64 ia64 ppc64 s390x sparc64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir	/bin
