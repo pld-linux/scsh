@@ -2,13 +2,15 @@ Summary:	Unix shell embedded within Scheme
 Summary(pl):	Uniksowa pow³oka osadzona w Scheme
 Name:		scsh
 Version:	0.6.6
-Release:	2
+Release:	3
 License:	BSD-like
 Group:		Applications/Shells
 Source0:	ftp://ftp.scsh.net/pub/scsh/0.6/%{name}-%{version}.tar.gz
 # Source0-md5:	fa0a62f8ec7b0629c297144c59027ba4
 Patch0:		%{name}-build.patch
+Patch1:		%{name}-link.patch
 URL:		http://www.scsh.net/
+BuildRequires:	autoconf
 BuildRequires:	automake
 Requires(post,preun):	grep
 Requires(preun):	fileutils
@@ -46,9 +48,11 @@ Pliki programistyczne scsh - uniksowej pow³oki osadzonej w Scheme.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-cp -f %{_datadir}/automake/config.sub .
+cp -f /usr/share/automake/config.sub .
+%{__autoconf}
 %configure
 %{__make}
 
