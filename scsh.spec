@@ -28,7 +28,7 @@ standard systems applications usually written in C.
 scsh to odmiana Scheme 48 (systemu new-tech Scheme zgodnego z R5RS).
 scsh zost±³ zaprojektowany do pisania rzeczywistych, samodzielnych
 programów i skryptów pow³oki pod Uniksem. scsh obejmuje szeroki zakres
-zastosowañ, od aplikacjiod "skryptowych" zwykle obs³ugiwanych przy
+zastosowañ, od aplikacji "skryptowych" zwykle obs³ugiwanych przy
 pomocy Perla lub sh do bardziej standardowych aplikacji systemowych
 zwykle pisanych w C.
 
