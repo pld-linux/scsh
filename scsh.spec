@@ -1,13 +1,14 @@
 Summary:	Unix shell embedded within Scheme
+Summary(pl):	Uniksowa pow³oka osadzona w Scheme
 Name:		scsh
 Version:	0.6.6
 Release:	2
 License:	BSD-like
 Group:		Applications/Shells
-URL:		http://www.scsh.net/
 Source0:	ftp://ftp.scsh.net/pub/scsh/0.6/%{name}-%{version}.tar.gz
 # Source0-md5:	fa0a62f8ec7b0629c297144c59027ba4
 Patch0:		%{name}-build.patch
+URL:		http://www.scsh.net/
 BuildRequires:	automake
 Requires(post,preun):	grep
 Requires(preun):	fileutils
@@ -18,17 +19,29 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Scsh is a variant of Scheme 48 (an R5RS compliant new-tech Scheme
-system) Scsh is designed for writing real-life standalone Unix
+system). Scsh is designed for writing real-life standalone Unix
 programs and shell scripts. Scsh spans a wide range of application,
-from ?script? applications usually handled with perl or sh, to more
+from "script" applications usually handled with perl or sh, to more
 standard systems applications usually written in C.
+
+%description -l pl
+scsh to odmiana Scheme 48 (systemu new-tech Scheme zgodnego z R5RS).
+scsh zost±³ zaprojektowany do pisania rzeczywistych, samodzielnych
+programów i skryptów pow³oki pod Uniksem. scsh obejmuje szeroki zakres
+zastosowañ, od aplikacjiod "skryptowych" zwykle obs³ugiwanych przy
+pomocy Perla lub sh do bardziej standardowych aplikacji systemowych
+zwykle pisanych w C.
 
 %package devel
 Summary:	Development scsh files
+Summary(pl):	Programistyczne pliki scsh
 Group:		Development/Libraries
 
 %description devel
 Unix shell embedded within Scheme - development files.
+
+%description devel -l pl
+Pliki programistyczne scsh - uniksowej pow³oki osadzonej w Scheme.
 
 %prep
 %setup -q
