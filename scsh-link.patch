@@ -1,0 +1,28 @@
+--- scsh-0.6.6/configure.in.orig	2004-03-15 16:53:48.000000000 +0100
++++ scsh-0.6.6/configure.in	2005-02-06 15:06:25.779174232 +0100
+@@ -325,13 +325,10 @@
+      AC_CHECK_LIB(m, main)
+      AC_CHECK_LIB(dl, main)
+      AC_CHECK_LIB(mld, main)
+-     AC_CHECK_LIB(nsl, main)
+      AC_CHECK_LIB(gen, main)
+      AC_CHECK_LIB(socket, main)
+      AC_CHECK_LIB(sun, getpwnam)
+      AC_CHECK_LIB(c, crypt, [true], AC_CHECK_LIB(crypt, crypt))
+-     dnl Solaris 2.3 seems to need -lelf for nlist().  (tnx Bryan O'Sullivan)
+-     AC_CHECK_LIB(elf, main)
+      S48_POSIX_LIBC
+      AC_CONST
+      AC_RETSIGTYPE
+@@ -343,7 +340,10 @@
+      AC_CHECK_FUNC(dlopen, [AC_DEFINE(HAVE_DLOPEN, 
+ 				1, [Define to 1 if the interface to the dynamic linker exists])
+                             have_dlopen="yes"],
+-			   [AC_CHECK_FUNC(nlist, [AC_LIBOBJ([c/fake/libdl1])],
++			   [
++			     dnl Solaris 2.3 seems to need -lelf for nlist().  (tnx Bryan O'Sullivan)
++			    AC_CHECK_LIB(elf, nlist)
++			    AC_CHECK_FUNC(nlist, [AC_LIBOBJ([c/fake/libdl1])],
+ 	       					 [AC_LIBOBJ([c/fake/libdl2])])
+                             have_dlopen="no"])
+      AC_CHECK_FUNCS(socket chroot)
