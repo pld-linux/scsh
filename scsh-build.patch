@@ -1,0 +1,68 @@
+--- scsh-0.6.6.orig/emacs/cmuscheme48.el
++++ scsh-0.6.6/emacs/cmuscheme48.el
+@@ -3,6 +3,23 @@
+ (provide 'cmuscheme48)
+ (require 'cmuscheme)
+ 
++;;;###autoload
++(defvar scsh-program-name "scsh"
++  "The program name and arguments to be invoked for the `run-scsh'
++command.")
++
++;;;###autoload
++(defun run-scsh (arg)
++  "Run inferiour `scsh'.  See the documentation to `run-scheme' after
++`cmuscheme' has been `require'd."
++  (interactive (list (if current-prefix-arg
++			 (read-string "Run Scsh: " scsh-program-name)
++		       scsh-program-name)))
++  (run-scheme scsh-program-name))
++
++;; For `scsh':
++(put 'with-cwd 'scheme-indent-function 1)
++
+ (define-key scheme-mode-map "\M-\C-x" 'scheme48-send-definition);gnu convention
+ (define-key scheme-mode-map "\C-x\C-e" 'scheme48-send-last-sexp);gnu convention
+ (define-key scheme-mode-map "\C-ce"    'scheme48-send-definition)
+--- scsh-0.6.6.orig/scsh/db.scm
++++ scsh-0.6.6/scsh/db.scm
+@@ -69,7 +69,7 @@
+ (foreign-source
+   "#include <sys/types.h>"
+   "#include <limits.h>"
+-  "#include \"/usr/local/include/db.h\""
++  "#include <db.h>"
+   ""
+   "extern int errno;"
+   ""
+--- scsh-0.6.6.orig/scsh/ekko.scm
++++ scsh-0.6.6/scsh/ekko.scm
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/scsh -s
++#!/usr/bin/scsh -s
+ !#
+ 
+ (define (main args)
+--- scsh-0.6.6.orig/scsh/lib-dirs.scm
++++ scsh-0.6.6/scsh/lib-dirs.scm
+@@ -5,7 +5,7 @@
+ ;;;     SCSH-LEVEL-0: getenv
+ ;;;     SCSH-LEVEL-0: the file-name procs
+ 
+-(define default-lib-dirs '("/usr/local/lib/scsh/modules/"))
++(define default-lib-dirs '("/usr/lib/scsh/modules/" "/usr/local/lib/scsh/modules/"))
+ 
+ (define (set-default-lib-dirs! path-list)
+   (set! default-lib-dirs path-list))
+--- scsh-0.6.6.orig/scsh/db.c
++++ scsh-0.6.6/scsh/db.c
+@@ -8,7 +8,7 @@
+ 
+ #include <sys/types.h>
+ #include <limits.h>
+-#include "/usr/local/include/db.h"
++#include <db.h>
+ 
+ extern int errno;
+ 
+
