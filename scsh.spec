@@ -7,6 +7,7 @@ Group:		Applications/Shells
 URL:		http://www.scsh.net/
 Source0:	ftp://ftp.scsh.net/pub/scsh/0.6/%{name}-%{version}.tar.gz
 # Source0-md5:	fa0a62f8ec7b0629c297144c59027ba4
+Patch0:		%{name}-build.patch
 BuildRequires:	automake
 Requires(post,preun):	grep
 Requires(preun):	fileutils
@@ -30,6 +31,7 @@ Unix shell embedded within Scheme - development files.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 cp -f %{_datadir}/automake/config.sub .
