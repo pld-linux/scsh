@@ -1,4 +1,3 @@
-#
 Summary:	Unix shell embedded within Scheme
 Name:		scsh
 Version:	0.6.6
