@@ -12,9 +12,10 @@ Patch1:		%{name}-link.patch
 URL:		http://www.scsh.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	rpmbuild(macros) >= 1.213
 Requires(post,preun):	grep
 Requires(preun):	fileutils
-ExcludeArch:	alpha amd64 ia64 ppc64 s390x sparc64
+ExcludeArch:	%{x8664} alpha ia64 ppc64 s390x sparc64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_bindir	/bin
