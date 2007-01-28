@@ -1,12 +1,12 @@
 Summary:	Unix shell embedded within Scheme
 Summary(pl):	Uniksowa pow³oka osadzona w Scheme
 Name:		scsh
-Version:	0.6.6
-Release:	4
+Version:	0.6.7
+Release:	1
 License:	BSD-like
 Group:		Applications/Shells
 Source0:	ftp://ftp.scsh.net/pub/scsh/0.6/%{name}-%{version}.tar.gz
-# Source0-md5:	fa0a62f8ec7b0629c297144c59027ba4
+# Source0-md5:	69c88ca86a8aaaf0f87d253b99d339b5
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-link.patch
 URL:		http://www.scsh.net/
