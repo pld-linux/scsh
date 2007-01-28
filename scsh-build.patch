@@ -1,5 +1,35 @@
---- scsh-0.6.6.orig/emacs/cmuscheme48.el
-+++ scsh-0.6.6/emacs/cmuscheme48.el
+diff -ur scsh-0.6.7.org/c/scheme48heap.c scsh-0.6.7/c/scheme48heap.c
+--- scsh-0.6.7.org/c/scheme48heap.c	2006-03-21 17:22:46.000000000 +0100
++++ scsh-0.6.7/c/scheme48heap.c	2007-01-28 14:32:40.019483750 +0100
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <string.h>
+ #include "prescheme.h"
+ #include <string.h>
+ #include "scheme48vm.h"
+diff -ur scsh-0.6.7.org/c/scheme48vm.c scsh-0.6.7/c/scheme48vm.c
+--- scsh-0.6.7.org/c/scheme48vm.c	2006-03-21 17:22:42.000000000 +0100
++++ scsh-0.6.7/c/scheme48vm.c	2007-01-28 14:32:40.015483500 +0100
+@@ -1,4 +1,5 @@
+ #include <stdio.h>
++#include <string.h>
+ #include "prescheme.h"
+ #include "scheme48vm-prelude.h"
+ 
+diff -ur scsh-0.6.7.org/c/unix/dynamo.c scsh-0.6.7/c/unix/dynamo.c
+--- scsh-0.6.7.org/c/unix/dynamo.c	2001-01-22 13:48:00.000000000 +0100
++++ scsh-0.6.7/c/unix/dynamo.c	2007-01-28 14:33:40.687275250 +0100
+@@ -4,6 +4,7 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
+ #include <unistd.h>
+ #include "sysdep.h"
+ #include "scheme48.h"
+diff -ur scsh-0.6.7.org/emacs/cmuscheme48.el scsh-0.6.7/emacs/cmuscheme48.el
+--- scsh-0.6.7.org/emacs/cmuscheme48.el	1999-09-14 14:44:52.000000000 +0200
++++ scsh-0.6.7/emacs/cmuscheme48.el	2007-01-28 14:32:40.011483250 +0100
 @@ -3,6 +3,23 @@
  (provide 'cmuscheme48)
  (require 'cmuscheme)
@@ -24,38 +54,9 @@
  (define-key scheme-mode-map "\M-\C-x" 'scheme48-send-definition);gnu convention
  (define-key scheme-mode-map "\C-x\C-e" 'scheme48-send-last-sexp);gnu convention
  (define-key scheme-mode-map "\C-ce"    'scheme48-send-definition)
---- scsh-0.6.6.orig/scsh/db.scm
-+++ scsh-0.6.6/scsh/db.scm
-@@ -69,7 +69,7 @@
- (foreign-source
-   "#include <sys/types.h>"
-   "#include <limits.h>"
--  "#include \"/usr/local/include/db.h\""
-+  "#include <db.h>"
-   ""
-   "extern int errno;"
-   ""
---- scsh-0.6.6.orig/scsh/ekko.scm
-+++ scsh-0.6.6/scsh/ekko.scm
-@@ -1,4 +1,4 @@
--#!/usr/local/bin/scsh -s
-+#!/usr/bin/scsh -s
- !#
- 
- (define (main args)
---- scsh-0.6.6.orig/scsh/lib-dirs.scm
-+++ scsh-0.6.6/scsh/lib-dirs.scm
-@@ -5,7 +5,7 @@
- ;;;     SCSH-LEVEL-0: getenv
- ;;;     SCSH-LEVEL-0: the file-name procs
- 
--(define default-lib-dirs '("/usr/local/lib/scsh/modules/"))
-+(define default-lib-dirs '("/usr/lib/scsh/modules/" "/usr/local/lib/scsh/modules/"))
- 
- (define (set-default-lib-dirs! path-list)
-   (set! default-lib-dirs path-list))
---- scsh-0.6.6.orig/scsh/db.c
-+++ scsh-0.6.6/scsh/db.c
+diff -ur scsh-0.6.7.org/scsh/db.c scsh-0.6.7/scsh/db.c
+--- scsh-0.6.7.org/scsh/db.c	2006-03-02 22:46:15.000000000 +0100
++++ scsh-0.6.7/scsh/db.c	2007-01-28 14:32:40.011483250 +0100
 @@ -8,7 +8,7 @@
  
  #include <sys/types.h>
@@ -65,47 +66,46 @@
  
  extern int errno;
  
-
---- scsh/c/scheme48vm.c.org	2007-01-28 00:41:33.495497167 +0000
-+++ scsh/c/scheme48vm.c	2007-01-28 00:41:54.036575518 +0000
-@@ -1,4 +1,5 @@
- #include <stdio.h>
-+#include <string.h>
- #include "prescheme.h"
- #include "scheme48vm-prelude.h"
+diff -ur scsh-0.6.7.org/scsh/db.scm scsh-0.6.7/scsh/db.scm
+--- scsh-0.6.7.org/scsh/db.scm	2004-01-09 13:51:20.000000000 +0100
++++ scsh-0.6.7/scsh/db.scm	2007-01-28 14:32:40.011483250 +0100
+@@ -69,7 +69,7 @@
+ (foreign-source
+   "#include <sys/types.h>"
+   "#include <limits.h>"
+-  "#include \"/usr/local/include/db.h\""
++  "#include <db.h>"
+   ""
+   "extern int errno;"
+   ""
+diff -ur scsh-0.6.7.org/scsh/ekko.scm scsh-0.6.7/scsh/ekko.scm
+--- scsh-0.6.7.org/scsh/ekko.scm	1999-09-14 15:32:01.000000000 +0200
++++ scsh-0.6.7/scsh/ekko.scm	2007-01-28 14:32:40.011483250 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/local/bin/scsh -s
++#!/usr/bin/scsh -s
+ !#
  
---- scsh/c/scheme48heap.c.org	2007-01-28 00:42:32.690604751 +0000
-+++ scsh/c/scheme48heap.c	2007-01-28 00:42:39.998988421 +0000
-@@ -1,4 +1,5 @@
- #include <stdio.h>
-+#include <string.h>
- #include "prescheme.h"
- #include "scheme48vm.h"
+ (define (main args)
+diff -ur scsh-0.6.7.org/scsh/lib-dirs.scm scsh-0.6.7/scsh/lib-dirs.scm
+--- scsh-0.6.7.org/scsh/lib-dirs.scm	2004-02-17 08:46:24.000000000 +0100
++++ scsh-0.6.7/scsh/lib-dirs.scm	2007-01-28 14:32:40.011483250 +0100
+@@ -5,7 +5,7 @@
+ ;;;     SCSH-LEVEL-0: getenv
+ ;;;     SCSH-LEVEL-0: the file-name procs
  
---- scsh/c/unix/io.c~	2007-01-28 00:47:48.000000000 +0000
-+++ scsh/c/unix/io.c	2007-01-28 00:49:31.212576026 +0000
-@@ -146,13 +146,13 @@
-       return 0; }
- }
+-(define default-lib-dirs '("/usr/local/lib/scsh/modules/"))
++(define default-lib-dirs '("/usr/lib/scsh/modules/" "/usr/local/lib/scsh/modules/"))
  
-+static long write_integer(unsigned long n, FILE *port);
-+
- long
- ps_write_integer(long n, FILE *port)
- {
-   int status;
- 
--  static long write_integer(unsigned long n, FILE *port);
--
-   if (n == 0) {
-     WRITE_CHAR('0', port, status);
-     return status; }
---- scsh/scsh/libscsh.c.org	2007-01-28 00:46:50.652147036 +0000
-+++ scsh/scsh/libscsh.c	2007-01-28 00:47:08.033059487 +0000
-@@ -4,6 +4,7 @@
- 
+ (define (set-default-lib-dirs! path-list)
+   (set! default-lib-dirs path-list))
+diff -ur scsh-0.6.7.org/scsh/libscsh.c scsh-0.6.7/scsh/libscsh.c
+--- scsh-0.6.7.org/scsh/libscsh.c	2006-03-21 17:29:31.000000000 +0100
++++ scsh-0.6.7/scsh/libscsh.c	2007-01-28 14:32:40.019483750 +0100
+@@ -5,6 +5,7 @@
  #include <stdarg.h>
  #include <stdio.h>
+ #include <stdlib.h>
 +#include <unistd.h>
  #include "scheme48.h"
  #include "libscsh.h"
