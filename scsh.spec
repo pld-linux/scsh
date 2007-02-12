@@ -1,5 +1,5 @@
 Summary:	Unix shell embedded within Scheme
-Summary(pl):	Uniksowa pow≥oka osadzona w Scheme
+Summary(pl.UTF-8):   Uniksowa pow≈Çoka osadzona w Scheme
 Name:		scsh
 Version:	0.6.7
 Release:	1
@@ -27,24 +27,24 @@ programs and shell scripts. Scsh spans a wide range of application,
 from "script" applications usually handled with perl or sh, to more
 standard systems applications usually written in C.
 
-%description -l pl
+%description -l pl.UTF-8
 scsh to odmiana Scheme 48 (systemu new-tech Scheme zgodnego z R5RS).
-scsh zost±≥ zaprojektowany do pisania rzeczywistych, samodzielnych
-programÛw i skryptÛw pow≥oki pod Uniksem. scsh obejmuje szeroki zakres
-zastosowaÒ, od aplikacji "skryptowych" zwykle obs≥ugiwanych przy
+scsh zostƒÖ≈Ç zaprojektowany do pisania rzeczywistych, samodzielnych
+program√≥w i skrypt√≥w pow≈Çoki pod Uniksem. scsh obejmuje szeroki zakres
+zastosowa≈Ñ, od aplikacji "skryptowych" zwykle obs≈Çugiwanych przy
 pomocy Perla lub sh do bardziej standardowych aplikacji systemowych
 zwykle pisanych w C.
 
 %package devel
 Summary:	Development scsh files
-Summary(pl):	Programistyczne pliki scsh
+Summary(pl.UTF-8):   Programistyczne pliki scsh
 Group:		Development/Libraries
 
 %description devel
 Unix shell embedded within Scheme - development files.
 
-%description devel -l pl
-Pliki programistyczne scsh - uniksowej pow≥oki osadzonej w Scheme.
+%description devel -l pl.UTF-8
+Pliki programistyczne scsh - uniksowej pow≈Çoki osadzonej w Scheme.
 
 %prep
 %setup -q
