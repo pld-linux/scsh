@@ -1,5 +1,5 @@
 Summary:	Unix shell embedded within Scheme
-Summary(pl.UTF-8):   Uniksowa powłoka osadzona w Scheme
+Summary(pl.UTF-8):	Uniksowa powłoka osadzona w Scheme
 Name:		scsh
 Version:	0.6.7
 Release:	1
@@ -37,7 +37,7 @@ zwykle pisanych w C.
 
 %package devel
 Summary:	Development scsh files
-Summary(pl.UTF-8):   Programistyczne pliki scsh
+Summary(pl.UTF-8):	Programistyczne pliki scsh
 Group:		Development/Libraries
 
 %description devel
