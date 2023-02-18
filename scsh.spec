@@ -2,14 +2,15 @@ Summary:	Unix shell embedded within Scheme
 Summary(pl.UTF-8):	Uniksowa powłoka osadzona w Scheme
 Name:		scsh
 Version:	0.6.7
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		Applications/Shells
-Source0:	ftp://ftp.scsh.net/pub/scsh/0.6/%{name}-%{version}.tar.gz
+#Source0Download: https://scsh.net/download/download.html
+Source0:	https://ftp.scsh.net/pub/scsh/0.6/%{name}-%{version}.tar.gz
 # Source0-md5:	69c88ca86a8aaaf0f87d253b99d339b5
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-link.patch
-URL:		http://www.scsh.net/
+URL:		https://scsh.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	rpmbuild(macros) >= 1.213
@@ -64,9 +65,9 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir}/%{name}/{doc,env},%{_includedir
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/%{name}/*.a $RPM_BUILD_ROOT%{_libdir}
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/%{name}/*.a $RPM_BUILD_ROOT%{_libdir}
 
-rm -rf $RPM_BUILD_ROOT%{_libdir}/%{name}/doc
+%{__rm} -r $RPM_BUILD_ROOT%{_libdir}/%{name}/doc
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,14 +92,22 @@ fi
 %doc doc/*/html/* doc/*.txt
 %attr(755,root,root) %{_bindir}/scsh
 %dir %{_libdir}/scsh
-%{_libdir}/scsh/[bcelmor]*
+%{_libdir}/scsh/big
+%{_libdir}/scsh/cig
+%{_libdir}/scsh/env
+%{_libdir}/scsh/link
+%{_libdir}/scsh/misc
+%{_libdir}/scsh/opt
+%{_libdir}/scsh/rts
 %{_libdir}/scsh/scsh
 %{_libdir}/scsh/srfi
 %{_libdir}/scsh/*.image
 %attr(755,root,root) %{_libdir}/scsh/scshvm
-%{_mandir}/man?/*
+%{_mandir}/man1/scsh.1*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/*.h
-%{_libdir}/*.a
+%{_includedir}/scheme48.h
+%{_includedir}/write-barrier.h
+%{_libdir}/libscsh.a
+%{_libdir}/libscshvm.a
